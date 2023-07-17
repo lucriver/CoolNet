@@ -1,10 +1,10 @@
 import numpy as np
 
 class Neuron:
-  techniques_weight_init = ["random"]
-  techniques_bias_init = ["zero","one"]
-  default_weight_init = techniques_weight_init[0]
-  default_bias_init = techniques_bias_init[0]
+  techniques_weight_init = ["zero","random"]
+  default_weight_init = "random"
+  techniques_bias_init = ["zero","small","one"]
+  default_bias_init = "zero"
 
   def __init__(self, 
                input_dim, 
@@ -32,6 +32,8 @@ class Neuron:
   def _init_bias(self, init_technique):
     if init_technique == "zero":
       return 0
+    if init_technique == "small":
+      return 0.01
     if init_technique == "one":
       return 1
 
