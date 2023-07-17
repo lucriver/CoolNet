@@ -10,11 +10,11 @@ class Neuron:
                input_dim, 
                weight_init_technique="random",
                bias_init_technique="zero"):
-    self.weight_init_technique = weight_init_technique.lower()
+    self.weight_init_technique = weight_init_technique
     if weight_init_technique not in Neuron.techniques_weight_init:
       print("weight initialization method not supported. using",Neuron.default_weight_init)
       self.weight_init_technique = Neuron.default_bias_init
-    self.bias_init_technique = bias_init_technique.lower()
+    self.bias_init_technique = bias_init_technique
     if bias_init_technique not in Neuron.techniques_bias_init:
       print("bias initialization method not supported. using",Neuron.default_bias_init)
       self.bias_init_technique = Neuron.default_bias_init
