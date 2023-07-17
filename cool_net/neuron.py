@@ -19,8 +19,8 @@ class Neuron:
       print("bias initialization method not supported. using",Neuron.default_bias_init)
       self.bias_init_technique = Neuron.default_bias_init
 
-    self.weight_count = input_dim
-    self.w = self._init_weights(self.weight_count, self.weight_init_technique)
+    self.w_count = input_dim
+    self.w = self._init_weights(self.w_count, self.weight_init_technique)
     self.b = self._init_bias(self.bias_init_technique)
 
   def _init_weights(self, weight_count, init_technique):
@@ -40,11 +40,11 @@ class Neuron:
   def forward(self, x):
     return np.dot(x,self.w) + self.b
 
-  def loadWeights(self, weightsDict):
-    if len(weightsDict) != self.weight_count:
+  def loadWeights(self, weights: np.array):
+    if len(weights) != self.w_count:
       raise Exception("Error: Mismatch in weights to load versus the quantity of weights for the neuron.")
     for i in range(self.w_count):
-      self.w[i] = weightsDict[i]
+      self.w[i] = weights[i]
 
   def loadBias(self, bias_val):
     self.b = bias_val
@@ -55,6 +55,5 @@ class Neuron:
   def getBias(self):
     return self.b
   
-  def getWeightsDict(self):
-    return {index: weight for index, weight in enumerate(self.w)}
-  
+  def getParams(self) -> dict:
+    return {'w': self.getWeights(), 'b': self.getBias()}
