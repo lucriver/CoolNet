@@ -40,19 +40,19 @@ class Neuron:
   def forward(self, x):
     return np.dot(x,self.w) + self.b
 
-  def loadWeights(self, weights: np.array):
+  def load_weights(self, weights: np.array):
     if len(weights) != self.w_count:
       raise Exception("Error: Mismatch in weights to load versus the quantity of weights for the neuron.")
     self.w = weights
 
-  def loadBias(self, bias_val):
+  def load_bias(self, bias_val):
     self.b = bias_val
 
-  def getWeights(self):
+  def get_weights(self):
     return self.w
 
-  def getBias(self):
+  def get_bias(self):
     return self.b
   
-  def getParams(self) -> dict:
+  def get_params(self) -> dict:
     return {'w': self.getWeights(), 'b': self.getBias()}
