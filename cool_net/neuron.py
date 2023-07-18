@@ -43,8 +43,7 @@ class Neuron:
   def loadWeights(self, weights: np.array):
     if len(weights) != self.w_count:
       raise Exception("Error: Mismatch in weights to load versus the quantity of weights for the neuron.")
-    for i in range(self.w_count):
-      self.w[i] = weights[i]
+    self.w = weights
 
   def loadBias(self, bias_val):
     self.b = bias_val
