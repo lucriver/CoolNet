@@ -1,5 +1,5 @@
-from cool_net import Neuron
-from cool_net import Funcs
+from cool_net.neuron import Neuron
+from cool_net.funcs import Funcs
 
 class Layer:
   activation_funcs = ["linear","relu","sigmoid", "tanh","leaky_relu"]
