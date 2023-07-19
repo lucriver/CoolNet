@@ -1,6 +1,6 @@
 from cool_net.layer import Layer
 from cool_net.funcs import Funcs
-import cupy as np 
+import numpy as np 
 
 class Net:
 
@@ -33,7 +33,7 @@ class Net:
 
   def forward_with_layers(self,x):
     outputs = []
-    for i in range(len(self.layer)):
+    for i in range(self.layer_count):
       y_before_activ_func = self.layer[i].forward(x)
       outputs.append(y_before_activ_func)
       x = self.layer[i].forward_pass(x)
